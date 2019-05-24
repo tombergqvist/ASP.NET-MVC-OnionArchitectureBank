@@ -1,17 +1,14 @@
 ﻿using Application.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Application.Queries.Customers
 {
-    public class CustomerDetailQuery
+    public class CustomerDetailsQuery
     {
-        public CustomerDetailModel GetCustomer(IBankDbContext context, int id)
+        public CustomerDetailsModel GetCustomer(IBankDbContext context, int id)
         {
             var customer = context.Customers.SingleOrDefault(c => c.CustomerId == id);
-            return new CustomerDetailModel()
+            return new CustomerDetailsModel()
             {
                 Givenname = customer.Givenname,
                 Surname = customer.Surname

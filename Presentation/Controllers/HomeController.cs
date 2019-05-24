@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models;
 using Application.Queries.Customers;
-using Persistence;
 using Application.Interfaces;
+using Application.Queries.Statistics;
 
 namespace Presentation.Controllers
 {
@@ -22,7 +22,7 @@ namespace Presentation.Controllers
 
         public IActionResult Index()
         {
-            var model = new CustomerDetailQuery().GetCustomer(_context, 1);
+            var model = new StatisticsQuery().GetStatistics(_context);
             return View(model);
         }
 

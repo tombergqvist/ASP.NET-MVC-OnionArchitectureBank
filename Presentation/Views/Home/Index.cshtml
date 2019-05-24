@@ -1,10 +1,13 @@
-﻿@model Application.Queries.CustomerDetailModel
+﻿@model Application.Queries.Statistics.StatisticsModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the start page</h1>
-    <p>@Model.Givenname @Model.Surname</p>
+    <h1 class="display-4">Welcome</h1>
+    <h2>Here are some statistics:</h2>
+    <p>Number of customers: @Model.CustomersCount</p>
+    <p>Number of accounts: @Model.AccountCount</p>
+    <p>Total balance: @Model.TotalBalance</p>
 </div>
