@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> signInManager
+@inject UserManager<ApplicationUser> userManager
+
+
+@if (signInManager.IsSignedIn(User))
+{
+    <ul class="nav navbar-nav flex-grow-1 align-items-center">
+
+        @if (User.IsInRole("admin"))
+        {
+            <div class="nav-link">
+                <li><a asp-action="EditUsers" asp-controller="admin"></a></li>
+            </div>
+        }
+
+        @if (User.IsInRole("cashier"))
+        {
+            <div class="nav-link">
+                <li><a asp-action="EditUsers" asp-controller="cashier"></a></li>
+            </div>
+        }
+
+        <li class="dropdown nav-link">
+            <a href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+            <ul class="dropdown-menu">
+                <li role="separator" class="divider"></li>
+                <a asp-controller="Account" asp-action="Logout"><li class="nav-link">Logout</li></a>
+            </ul>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-link"><a class="btn btn-light" asp-controller="Account" asp-action="Login">Log in</a> </li>
+    </ul>
+}

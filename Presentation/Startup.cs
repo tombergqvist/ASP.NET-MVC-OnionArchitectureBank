@@ -36,21 +36,24 @@ namespace Presentation
             });
 
             // Database
-            services.AddDbContext<IBankDbContext, BankDbContext>(options =>
+            services.AddDbContext<BankDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("BankAppData"));
             });
+            services.AddScoped<IBankDbContext>(s => s.GetRequiredService<BankDbContext>());
 
             // Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<BankDbContext>()
                 .AddDefaultTokenProviders();
+
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
                 options.Password.RequireDigit = true;
                 options.Password.RequireNonAlphanumeric = false;
             });
+
             services.ConfigureApplicationCookie(options =>
             {
                 // Cookie settings

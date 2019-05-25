@@ -8,6 +8,7 @@ using Presentation.Models;
 using Application.Queries.Customers;
 using Application.Interfaces;
 using Application.Queries.Statistics;
+using Persistence;
 
 namespace Presentation.Controllers
 {
