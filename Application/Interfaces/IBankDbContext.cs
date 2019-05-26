@@ -10,13 +10,13 @@ namespace Application.Interfaces
 {
     public interface IBankDbContext
     {
-        DbSet<Accounts> Accounts { get; set; }
-        DbSet<Cards> Cards { get; set; }
-        DbSet<Customers> Customers { get; set; }
-        DbSet<Dispositions> Dispositions { get; set; }
-        DbSet<Loans> Loans { get; set; }
+        DbSet<Account> Accounts { get; set; }
+        DbSet<Card> Cards { get; set; }
+        DbSet<Customer> Customers { get; set; }
+        DbSet<Disposition> Dispositions { get; set; }
+        DbSet<Loan> Loans { get; set; }
         DbSet<PermanentOrder> PermanentOrder { get; set; }
-        DbSet<Transactions> Transactions { get; set; }
+        DbSet<Transaction> Transactions { get; set; }
 
         //Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

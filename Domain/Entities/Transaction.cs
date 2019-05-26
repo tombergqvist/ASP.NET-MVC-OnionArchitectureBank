@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class Transactions
+    public partial class Transaction
     {
         public int TransactionId { get; set; }
         public int AccountId { get; set; }
@@ -16,6 +16,6 @@ namespace Domain.Entities
         public string Bank { get; set; }
         public string Account { get; set; }
 
-        public virtual Accounts AccountNavigation { get; set; }
+        public virtual Account AccountNavigation { get; set; }
     }
 }

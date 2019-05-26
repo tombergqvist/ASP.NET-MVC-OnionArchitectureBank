@@ -17,13 +17,13 @@ namespace Persistence
         {
         }
 
-        public virtual DbSet<Accounts> Accounts { get; set; }
-        public virtual DbSet<Cards> Cards { get; set; }
-        public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<Dispositions> Dispositions { get; set; }
-        public virtual DbSet<Loans> Loans { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Card> Cards { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Disposition> Dispositions { get; set; }
+        public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<PermanentOrder> PermanentOrder { get; set; }
-        public virtual DbSet<Transactions> Transactions { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,7 +40,7 @@ namespace Persistence
 
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity<Accounts>(entity =>
+            modelBuilder.Entity<Account>(entity =>
             {
                 entity.HasKey(e => e.AccountId)
                     .HasName("PK_account");
@@ -54,7 +54,7 @@ namespace Persistence
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Cards>(entity =>
+            modelBuilder.Entity<Card>(entity =>
             {
                 entity.HasKey(e => e.CardId);
 
@@ -86,7 +86,7 @@ namespace Persistence
                     .HasConstraintName("FK_Cards_Dispositions");
             });
 
-            modelBuilder.Entity<Customers>(entity =>
+            modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CustomerId);
 
@@ -133,7 +133,7 @@ namespace Persistence
                     .HasMaxLength(15);
             });
 
-            modelBuilder.Entity<Dispositions>(entity =>
+            modelBuilder.Entity<Disposition>(entity =>
             {
                 entity.HasKey(e => e.DispositionId)
                     .HasName("PK_disposition");
@@ -155,7 +155,7 @@ namespace Persistence
                     .HasConstraintName("FK_Dispositions_Customers");
             });
 
-            modelBuilder.Entity<Loans>(entity =>
+            modelBuilder.Entity<Loan>(entity =>
             {
                 entity.HasKey(e => e.LoanId)
                     .HasName("PK_loan");
@@ -197,13 +197,13 @@ namespace Persistence
                     .HasMaxLength(50);
 
                 entity.HasOne(d => d.Account)
-                    .WithMany(p => p.PermanentOrder)
+                    .WithMany(p => p.PermanentOrders)
                     .HasForeignKey(d => d.AccountId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PermenentOrder_Accounts");
             });
 
-            modelBuilder.Entity<Transactions>(entity =>
+            modelBuilder.Entity<Transaction>(entity =>
             {
                 entity.HasKey(e => e.TransactionId)
                     .HasName("PK_trans2");

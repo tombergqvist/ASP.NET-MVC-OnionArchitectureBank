@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class Loans
+    public partial class Loan
     {
         public int LoanId { get; set; }
         public int AccountId { get; set; }
@@ -13,6 +13,6 @@ namespace Domain.Entities
         public decimal Payments { get; set; }
         public string Status { get; set; }
 
-        public virtual Accounts Account { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

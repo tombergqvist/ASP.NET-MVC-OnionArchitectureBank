@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class Dispositions
+    public partial class Disposition
     {
-        public Dispositions()
+        public Disposition()
         {
-            Cards = new HashSet<Cards>();
+            Cards = new HashSet<Card>();
         }
 
         public int DispositionId { get; set; }
@@ -15,8 +15,8 @@ namespace Domain.Entities
         public int AccountId { get; set; }
         public string Type { get; set; }
 
-        public virtual Accounts Account { get; set; }
-        public virtual Customers Customer { get; set; }
-        public virtual ICollection<Cards> Cards { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual ICollection<Card> Cards { get; set; }
     }
 }

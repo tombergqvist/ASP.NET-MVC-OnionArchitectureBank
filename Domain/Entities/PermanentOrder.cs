@@ -12,6 +12,6 @@ namespace Domain.Entities
         public decimal? Amount { get; set; }
         public string Symbol { get; set; }
 
-        public virtual Accounts Account { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

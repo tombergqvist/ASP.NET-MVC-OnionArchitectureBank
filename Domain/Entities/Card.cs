@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain.Entities
 {
-    public partial class Cards
+    public partial class Card
     {
         public int CardId { get; set; }
         public int DispositionId { get; set; }
@@ -15,6 +15,6 @@ namespace Domain.Entities
         public int ExpM { get; set; }
         public int ExpY { get; set; }
 
-        public virtual Dispositions Disposition { get; set; }
+        public virtual Disposition Disposition { get; set; }
     }
 }
