@@ -25,11 +25,11 @@ namespace Presentation.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(Login login, string returnurl)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnurl)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(login.Username, login.Password, true, false);
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
                 if (result.Succeeded)
                 {
 

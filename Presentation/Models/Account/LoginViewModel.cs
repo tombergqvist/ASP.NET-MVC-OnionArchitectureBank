@@ -2,7 +2,7 @@
 
 namespace Presentation.Models.Account
 {
-    public class Login
+    public class LoginViewModel
     {
         [Required(ErrorMessage = "Please enter a username")]
         [StringLength(50, ErrorMessage = "Username is too long, max 50 characters")]

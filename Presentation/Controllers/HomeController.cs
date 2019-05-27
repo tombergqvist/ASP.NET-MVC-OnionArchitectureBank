@@ -23,8 +23,7 @@ namespace Presentation.Controllers
 
         public IActionResult Index()
         {
-            var model = new StatisticsQuery().GetStatistics(_context);
-            return View(model);
+            return View(new StatisticsQuery().Get(_context));
         }
 
         public IActionResult Privacy()

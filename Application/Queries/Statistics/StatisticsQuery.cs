@@ -5,7 +5,7 @@ namespace Application.Queries.Statistics
 {
     public class StatisticsQuery
     {
-        public StatisticsModel GetStatistics(IBankDbContext context)
+        public StatisticsModel Get(IBankDbContext context)
         {
             return new StatisticsModel()
             {

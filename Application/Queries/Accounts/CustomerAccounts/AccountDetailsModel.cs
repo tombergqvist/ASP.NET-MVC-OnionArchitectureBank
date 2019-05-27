@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Queries.Accounts
+namespace Application.Queries.Accounts.CustomerAccounts
 {
     public class AccountDetailsModel
     {
@@ -10,5 +10,6 @@ namespace Application.Queries.Accounts
         public string Frequency { get; set; }
         public DateTime Created { get; set; }
         public decimal Balance { get; set; }
+        public string Type { get; set; }
     }
 }

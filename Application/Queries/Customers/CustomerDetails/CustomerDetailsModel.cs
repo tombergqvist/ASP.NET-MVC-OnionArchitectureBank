@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Queries.Customers
+namespace Application.Queries.Customers.CustomerDetails
 {
     public class CustomerDetailsModel
     {
