@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Commands.Customers;
+using Application.Interfaces;
 using Application.Queries.Accounts.AccountDetails;
 using Application.Queries.Accounts.CustomerAccounts;
 using Application.Queries.Customers.CustomerDetails;
@@ -6,6 +7,7 @@ using Application.Queries.Customers.CustomerSearch;
 using Application.Queries.Transactions;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models.Cashier;
+using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
@@ -21,6 +23,25 @@ namespace Presentation.Controllers
         public IActionResult ManageCustomers()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult EditCustomer()
+        {
+            return View(new NewCustomerCommandModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditCustomer(NewCustomerCommandModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await new NewCustomerCommand().RunAsync(_context, model);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+
         }
 
         [HttpGet]

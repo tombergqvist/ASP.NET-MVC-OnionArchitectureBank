@@ -19,6 +19,18 @@
           data-ajax-method="POST"
           data-ajax-mode="replace"
           data-ajax-update="#edit-user">
+
+        <input type="hidden" asp-for="User.Id" />
+        @if (Model.Role == null)
+        {
+            <p>This user has no current role. </p>
+        }
+        <select asp-for="Role">
+            @foreach (var role in Model.AvailableRoles)
+            {
+                <option value="@role.Name">@role.Name</option>
+            }
+        </select>
         <div class="form-group">
             <label asp-for="User.UserName"></label>
             <input class="form-control" asp-for="User.UserName" />

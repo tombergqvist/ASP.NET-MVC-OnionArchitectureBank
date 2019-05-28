@@ -1,0 +1,75 @@
+﻿@using Application.Commands.Customers
+
+@model NewCustomerCommandModel
+
+<div class="text-center">
+    <form asp-action="NewCustomer" asp-controller="Cashier" method="post">
+        <input type="hidden" asp-for="CustomerId" />
+        <div class="form-group">
+            <label asp-for="Givenname"></label>
+            <input class="form-control" asp-for="Givenname" />
+            <span asp-validation-for="Givenname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Surname"></label>
+            <input class="form-control" asp-for="Surname" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Gender"></label>
+            <input class="form-control" asp-for="Gender" />
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NationalId"></label>
+            <input class="form-control" asp-for="NationalId" />
+            <span asp-validation-for="NationalId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Streetaddress"></label>
+            <input class="form-control" asp-for="Streetaddress" />
+            <span asp-validation-for="Streetaddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Zipcode"></label>
+            <input class="form-control" asp-for="Zipcode" />
+            <span asp-validation-for="Zipcode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City"></label>
+            <input class="form-control" asp-for="City" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Country"></label>
+            <input class="form-control" asp-for="Country" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CountryCode"></label>
+            <input class="form-control" asp-for="CountryCode" />
+            <span asp-validation-for="CountryCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Telephonecountrycode"></label>
+            <input class="form-control" asp-for="Telephonecountrycode" />
+            <span asp-validation-for="Telephonecountrycode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Telephonenumber"></label>
+            <input class="form-control" asp-for="Telephonenumber" />
+            <span asp-validation-for="Telephonenumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Emailaddress"></label>
+            <input class="form-control" asp-for="Emailaddress" />
+            <span asp-validation-for="Emailaddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Birthday"></label>
+            <input class="form-control" asp-for="Birthday" />
+            <span asp-validation-for="Birthday" class="text-danger"></span>
+        </div>
+        <button class="btn btn-dark">Save</button>
+    </form>
+</div>

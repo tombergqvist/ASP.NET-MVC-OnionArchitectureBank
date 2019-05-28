@@ -18,6 +18,6 @@ namespace Application.Interfaces
         DbSet<PermanentOrder> PermanentOrder { get; set; }
         DbSet<Transaction> Transactions { get; set; }
 
-        //Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
