@@ -9,7 +9,5 @@ namespace Application.Queries.Accounts.AccountDetails
         public string Frequency { get; set; }
         public DateTime Created { get; set; }
         public decimal Balance { get; set; }
-
-        public List<TransactionsModel> Transactions { get; set; }
     }
 }

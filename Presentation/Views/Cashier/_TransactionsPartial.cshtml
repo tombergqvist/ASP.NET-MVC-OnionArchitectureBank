@@ -1,0 +1,32 @@
+﻿@model TransactionsViewModel
+
+@foreach (var transaction in Model.Transactions)
+{
+    <div class="row">
+        <div class="col">@transaction.TransactionId</div>
+        <div class="col">@transaction.Amount</div>
+        <div class="col">@transaction.Operation</div>
+        <div class="col">@transaction.Bank</div>
+        <div class="col">@transaction.Account</div>
+        <div class="col">@transaction.Date</div>
+        <div class="col">@transaction.Symbol</div>
+        <div class="col">@transaction.Type</div>
+        <div class="col">@transaction.Balance</div>
+    </div>
+    <hr />
+}
+@if (Model.HasMore)
+{
+    <div id="next-button">
+        <form asp-action="GetTransactions" asp-controller="Cashier"
+              data-ajax="true"
+              data-ajax-method="GET"
+              data-ajax-mode="after"
+              data-ajax-complete="removeNextButton"
+              data-ajax-update="#transactions-list">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" name="Page" value="@Model.Page" />
+            <button class="btn btn-dark">+</button>
+        </form>
+    </div>
+}

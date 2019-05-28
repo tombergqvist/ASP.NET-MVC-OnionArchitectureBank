@@ -21,7 +21,8 @@
         <div class="col">Balance</div>
     </div>
     <hr />
-    @foreach (var transaction in Model.Account.Transactions)
+
+    @foreach (var transaction in Model.TransactionsList.Transactions)
     {
         <div class="row">
             <div class="col">@transaction.TransactionId</div>
@@ -36,4 +37,20 @@
         </div>
         <hr />
     }
+    @if (Model.TransactionsList.HasMore)
+    {
+        <div id="next-button">
+            <form asp-action="GetTransactions" asp-controller="Cashier"
+                  data-ajax="true"
+                  data-ajax-method="GET"
+                  data-ajax-mode="after"
+                  data-ajax-complete="removeNextButton"
+                  data-ajax-update="#transactions-list">
+                <input type="hidden" name="id" value="@Model.Account.AccountId" />
+                <input type="hidden" name="page" value="1" />
+                <button class="btn btn-dark">+</button>
+            </form>
+        </div>
+    }
+    <div id="transactions-list"></div>
 </div>

@@ -5,7 +5,7 @@ namespace Persistence
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             BankDbContext context = new BankDbContext();
             Console.WriteLine($"Hello {context.Customers.First().Givenname}!");
