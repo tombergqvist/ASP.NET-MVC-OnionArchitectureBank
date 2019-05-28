@@ -26,9 +26,29 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditCustomer()
+        public IActionResult EditCustomer(int? id)
         {
-            return View(new NewCustomerCommandModel());
+            if(id == null)
+                return View(new NewCustomerCommandModel());
+
+            var query = new CustomerDetailsQuery().Get(_context, (int)id);
+            return View(new NewCustomerCommandModel()
+            {
+                Birthday = query.Birthday,
+                City = query.City,
+                Country = query.Country,
+                CountryCode = query.CountryCode,
+                CustomerId = query.CustomerId,
+                Emailaddress = query.Emailaddress,
+                Gender = query.Gender,
+                Givenname = query.Givenname,
+                Surname = query.Surname,
+                NationalId = query.NationalId,
+                Streetaddress = query.Streetaddress,
+                Telephonecountrycode = query.Telephonecountrycode,
+                Telephonenumber = query.Telephonenumber,
+                Zipcode = query.Zipcode
+            });
         }
 
         [HttpPost]

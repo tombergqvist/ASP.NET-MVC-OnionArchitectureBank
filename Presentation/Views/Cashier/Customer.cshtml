@@ -25,6 +25,10 @@
         <p>Country: @Model.Details.Country</p>
         <p>Country code: @Model.Details.CountryCode</p>
 
+        <form asp-action="EditCustomer" asp-controller="Cashier" method="get">
+            <input type="hidden" name="id" value="@Model.Details.CustomerId"/>
+            <button class="btn btn-dark">Edit this customer</button>
+        </form>
         <hr />
         <h3>Accounts</h3>
         @if (Model.AccountsModel.Accounts.Count > 0)

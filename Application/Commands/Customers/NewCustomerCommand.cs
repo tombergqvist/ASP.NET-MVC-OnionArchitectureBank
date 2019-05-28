@@ -16,22 +16,7 @@ namespace Application.Commands.Customers
 
             if (foundCustomer == null)
             {
-                Customer customer = new Customer()
-                {
-                    Birthday = model.Birthday,
-                    City = model.City,
-                    Country = model.Country,
-                    CountryCode = model.CountryCode,
-                    Emailaddress = model.Emailaddress,
-                    Gender = model.Gender,
-                    Givenname = model.Givenname,
-                    Surname = model.Surname,
-                    Streetaddress = model.Streetaddress,
-                    NationalId = model.NationalId,
-                    Telephonecountrycode = model.Telephonecountrycode,
-                    Telephonenumber = model.Telephonenumber,
-                    Zipcode = model.Zipcode
-                };
+                var customer = NewCustomer(model);
                 await context.Customers.AddAsync(customer);
                 await context.SaveChangesAsync(new System.Threading.CancellationToken());
 
@@ -51,8 +36,50 @@ namespace Application.Commands.Customers
                     Type = "Owner"
                 };
                 await context.Dispositions.AddAsync(disposition);
-                await context.SaveChangesAsync(new System.Threading.CancellationToken());
             }
+            else
+            {
+                EditCustomer(foundCustomer, model);
+            }
+            await context.SaveChangesAsync(new System.Threading.CancellationToken());
+        }
+
+        // Helpers
+        private void EditCustomer(Customer foundCustomer, NewCustomerCommandModel model)
+        {
+            foundCustomer.Birthday = model.Birthday;
+            foundCustomer.City = model.City;
+            foundCustomer.Country = model.Country;
+            foundCustomer.CountryCode = model.CountryCode;
+            foundCustomer.Emailaddress = model.Emailaddress;
+            foundCustomer.Gender = model.Gender;
+            foundCustomer.Givenname = model.Givenname;
+            foundCustomer.Surname = model.Surname;
+            foundCustomer.Streetaddress = model.Streetaddress;
+            foundCustomer.NationalId = model.NationalId;
+            foundCustomer.Telephonecountrycode = model.Telephonecountrycode;
+            foundCustomer.Telephonenumber = model.Telephonenumber;
+            foundCustomer.Zipcode = model.Zipcode;
+        }
+
+        private Customer NewCustomer(NewCustomerCommandModel model)
+        {
+            return new Customer()
+            {
+                Birthday = model.Birthday,
+                City = model.City,
+                Country = model.Country,
+                CountryCode = model.CountryCode,
+                Emailaddress = model.Emailaddress,
+                Gender = model.Gender,
+                Givenname = model.Givenname,
+                Surname = model.Surname,
+                Streetaddress = model.Streetaddress,
+                NationalId = model.NationalId,
+                Telephonecountrycode = model.Telephonecountrycode,
+                Telephonenumber = model.Telephonenumber,
+                Zipcode = model.Zipcode
+            };
         }
     }
 }
