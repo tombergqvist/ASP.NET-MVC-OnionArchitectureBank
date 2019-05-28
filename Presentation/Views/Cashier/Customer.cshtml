@@ -1,7 +1,9 @@
 ﻿@model CustomerViewModel
+
 <div class="text-center">
+    <h1>Customer</h1>
     <form asp-action="Customer" asp-controller="Cashier" method="GET">
-        <label for="id">Customer Id</label>
+        <label for="id">Find by Id</label>
         <input name="id" />
         <button>Find</button>
     </form>
@@ -31,7 +33,7 @@
             <hr />
             @foreach (var account in Model.AccountsModel.Accounts)
             {
-                <h4> @account.AccountId</h4>
+                <h4> <a asp-action="Account" asp-controller="Cashier" asp-route-id="@account.AccountId">@account.AccountId</a></h4>
                 <p>Balance: @account.Balance</p>
                 <p>Type: @account.Type</p>
                 <p>Created: @account.Created</p>

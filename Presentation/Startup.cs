@@ -90,10 +90,6 @@ namespace Presentation
                 routes.MapRoute("CashierController", "{action}", new { controller = "Cashier" });
                 routes.MapRoute("Index", "/", new { controller = "Home", action = "Index" });
                 routes.MapRoute("HomeController", "{action}", new { controller = "Home" });
-                //routes.MapRoute(
-                //      "asdsasd",
-                //      "customer/",
-                //      new { controller = "Cashier", action = "Customer"});
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

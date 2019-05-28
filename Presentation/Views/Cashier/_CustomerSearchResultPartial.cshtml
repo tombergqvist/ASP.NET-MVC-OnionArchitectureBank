@@ -1,8 +1,11 @@
 ﻿@model CustomerSearchViewModel
 
-@if (Model != null)
+@if (Model.Customers.Count() == 0)
 {
-
+    <p>No matching customer was found.</p>
+}
+else
+{
     @foreach (var customer in Model.Customers)
     {
         <hr />
@@ -14,8 +17,7 @@
         <p>@customer.Streetaddress, @customer.Zipcode @customer.City, @customer.Country</p>
         <hr />
     }
-
-    if (Model.HasMore)
+    @if (Model.HasMore)
     {
         <div id="next-button">
             <form asp-action="GetCustomers" asp-controller="Cashier"

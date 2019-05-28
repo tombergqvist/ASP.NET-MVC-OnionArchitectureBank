@@ -16,7 +16,13 @@ namespace Presentation.Controllers
             _context = context;
         }
 
-        public IActionResult EditUsers()
+        public IActionResult EditCustomers()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Account(int id)
         {
             return View();
         }
