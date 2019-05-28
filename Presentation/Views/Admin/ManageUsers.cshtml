@@ -1,0 +1,33 @@
+﻿@model List<ApplicationUser>
+
+<div class="text-center">
+    <h1>Manage users</h1>
+    <p>Edit a user.</p>
+    <form asp-action="EditUser" asp-controller="Admin"
+          data-ajax="true"
+          data-ajax-method="GET"
+          data-ajax-mode="replace"
+          data-ajax-update="#edit-user">
+        <div class="form-group">
+            <select name="id">
+                @foreach (var user in Model)
+                {
+                    <option value="@user.Id">@user.UserName</option>
+                }
+            </select>
+            <button class="btn btn-dark ">Edit</button>
+        </div>
+    </form>
+    <hr />
+    <p>Or create a new user.</p>
+    <form asp-action="NewUser" asp-controller="Admin"
+          data-ajax="true"
+          data-ajax-method="GET"
+          data-ajax-mode="replace"
+          data-ajax-update="#edit-user">
+        <button class="btn btn-dark ">New</button>
+    </form>
+    <hr />
+</div>
+
+<div id="edit-user"></div>

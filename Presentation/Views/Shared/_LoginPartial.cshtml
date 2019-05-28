@@ -9,23 +9,38 @@
 
         @if (User.IsInRole("admin"))
         {
-            <div class="nav-link">
-                <li><a asp-action="EditUsers" asp-controller="admin"></a></li>
-            </div>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="ManageUsers" asp-controller="admin">Manage users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="CustomerSearch">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="Customer">Customer details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="ManageCustomers" asp-controller="cashier">Manage customers</a>
+            </li>
         }
 
         @if (User.IsInRole("cashier"))
         {
-            <div class="nav-link">
-                <li><a asp-action="EditCustomers" asp-controller="cashier"></a></li>
-            </div>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="CustomerSearch">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="Customer">Customer details</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="EditCustomers" asp-controller="cashier">Manage customers</a>
+            </li>
         }
 
         <li class="dropdown nav-link">
             <a href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
             <ul class="dropdown-menu">
                 <li role="separator" class="divider"></li>
-                <a asp-controller="Account" asp-action="Logout"><li class="nav-link">Logout</li></a>
+                <li class="nav-link"><a asp-controller="Account" asp-action="Logout">Logout</a></li>
             </ul>
         </li>
     </ul>

@@ -18,7 +18,7 @@ namespace Presentation.Controllers
             _context = context;
         }
 
-        public IActionResult EditCustomers()
+        public IActionResult ManageCustomers()
         {
             return View();
         }
