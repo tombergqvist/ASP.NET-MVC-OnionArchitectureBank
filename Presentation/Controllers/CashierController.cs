@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Application.Queries.Accounts.CustomerAccounts;
 using Application.Queries.Customers.CustomerDetails;
+using Application.Queries.Customers.CustomerSearch;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models.Cashier;
 
@@ -21,18 +22,39 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult Customer()
+        public IActionResult Customer(int? id)
+        {
+            if(id == null)
+            {
+                return View();
+            }
+            else
+            {
+                return View(new CustomerViewModel()
+                {
+                    Details = new CustomerDetailsQuery().Get(_context, (int)id),
+                    AccountsModel = new CustomerAccountsQuery().Get(_context, (int)id),
+                });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult CustomerSearch()
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Customer(int id)
+        [HttpGet]
+        public IActionResult GetCustomers(string name, string city, int page)
         {
-            return View(new CustomerViewModel()
+            var query = new CustomerSearchQuery().Get(_context, name, city, page);
+            return PartialView("_CustomerSearchResultPartial", new CustomerSearchViewModel()
             {
-                Details = new CustomerDetailsQuery().Get(_context, id),
-                AccountsModel = new CustomerAccountsQuery().Get(_context, id),
+                Customers = query.Customers,
+                Page = page + 1,
+                Name = name,
+                City = city,
+                HasMore = query.HasMore
             });
         }
     }

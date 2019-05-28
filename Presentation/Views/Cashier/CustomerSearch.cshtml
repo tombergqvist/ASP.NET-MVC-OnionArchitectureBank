@@ -1,0 +1,15 @@
+﻿
+<div class="text-center">
+    <form asp-action="GetCustomers" asp-controller="Cashier" method="GET"
+          data-ajax="true"
+          data-ajax-method="GET"
+          data-ajax-mode="replace"
+          data-ajax-update="#customer-search-result">
+        <input name="name" />
+        <input name="city" />
+        <input type="hidden" name="page" value="0" />
+        <button>Search</button>
+    </form>
+
+    <div id="customer-search-result"></div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model CustomerSearchViewModel
+
+@if (Model != null)
+{
+
+    @foreach (var customer in Model.Customers)
+    {
+        <hr />
+        <p>
+            <a asp-action="Customer" asp-controller="Cashier" method="GET" asp-route-id="@customer.CustomerId">
+                @customer.Givenname @customer.Surname
+            </a>
+        </p>
+        <p>@customer.Streetaddress, @customer.Zipcode @customer.City, @customer.Country</p>
+        <hr />
+    }
+
+    if (Model.HasMore)
+    {
+        <div id="next-button">
+            <form asp-action="GetCustomers" asp-controller="Cashier"
+                  data-ajax="true"
+                  data-ajax-method="GET"
+                  data-ajax-mode="after"
+                  data-ajax-complete="removeNextButton"
+                  data-ajax-update="#customer-search-result">
+                <input type="hidden" asp-for="Name" />
+                <input type="hidden" asp-for="City" />
+                <input type="hidden" name="Page" value="@Model.Page" />
+                <button>More...</button>
+            </form>
+        </div>
+    }
+}

@@ -1,45 +1,46 @@
 ﻿@model CustomerViewModel
+<div class="text-center">
+    <form asp-action="Customer" asp-controller="Cashier" method="GET">
+        <label for="id">Customer Id</label>
+        <input name="id" />
+        <button>Find</button>
+    </form>
 
-<form asp-action="Customer" asp-controller="Cashier">
-    <label name="Customer Id"></label>
-    <input name="Id" />
-    <button>Find</button>
-</form>
-
-@if (Model != null && Model.Details != null)
-{
-    <h1>@Model.Details.Givenname @Model.Details.Surname</h1>
-    <p>Id: @Model.Details.CustomerId</p>
-    <p>National Id: @Model.Details.NationalId</p>
-    <p>Gender: @Model.Details.Gender</p>
-    <p>Birthday: @Model.Details.Birthday</p>
-
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:@Model.Details.Emailaddress">@Model.Details.Emailaddress</a></p>
-    <p>Phone: +@Model.Details.Telephonecountrycode @Model.Details.Telephonenumber</p>
-    <p>Street: @Model.Details.Streetaddress</p>
-    <p>Zip: @Model.Details.Zipcode</p>
-    <p>City: @Model.Details.City</p>
-    <p>Country: @Model.Details.Country</p>
-    <p>Country code: @Model.Details.CountryCode</p>
-
-    <hr />
-    <h3>Accounts</h3>
-    @if (Model.AccountsModel.Accounts.Count > 0)
+    @if (Model != null && Model.Details != null)
     {
-        <p>Total balance: @Model.AccountsModel.TotalBalance</p>
+        <h1>@Model.Details.Givenname @Model.Details.Surname</h1>
+        <p>Id: @Model.Details.CustomerId</p>
+        <p>National Id: @Model.Details.NationalId</p>
+        <p>Gender: @Model.Details.Gender</p>
+        <p>Birthday: @Model.Details.Birthday</p>
+
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:@Model.Details.Emailaddress">@Model.Details.Emailaddress</a></p>
+        <p>Phone: +@Model.Details.Telephonecountrycode @Model.Details.Telephonenumber</p>
+        <p>Street: @Model.Details.Streetaddress</p>
+        <p>Zip: @Model.Details.Zipcode</p>
+        <p>City: @Model.Details.City</p>
+        <p>Country: @Model.Details.Country</p>
+        <p>Country code: @Model.Details.CountryCode</p>
+
         <hr />
-        @foreach (var account in Model.AccountsModel.Accounts)
+        <h3>Accounts</h3>
+        @if (Model.AccountsModel.Accounts.Count > 0)
         {
-            <p>Id: @account.AccountId</p>
-            <p>Balance: @account.Balance</p>
-            <p>Type: @account.Type</p>
-            <p>Created: @account.Created</p>
+            <p>Total balance: @Model.AccountsModel.TotalBalance</p>
             <hr />
+            @foreach (var account in Model.AccountsModel.Accounts)
+            {
+                <h4> @account.AccountId</h4>
+                <p>Balance: @account.Balance</p>
+                <p>Type: @account.Type</p>
+                <p>Created: @account.Created</p>
+                <hr />
+            }
+        }
+        else
+        {
+            <p>No accounts.</p>
         }
     }
-    else
-    {
-        <p>No accounts.</p>
-    }
-}
+</div>

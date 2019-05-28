@@ -3,7 +3,6 @@
 @inject SignInManager<ApplicationUser> signInManager
 @inject UserManager<ApplicationUser> userManager
 
-
 @if (signInManager.IsSignedIn(User))
 {
     <ul class="nav navbar-nav flex-grow-1 align-items-center">
