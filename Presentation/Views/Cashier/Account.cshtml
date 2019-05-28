@@ -1,5 +1,39 @@
-﻿
+﻿@model AccountViewModel
 
 <div class="text-center">
     <h1>Account</h1>
+    <h4> @Model.Account.AccountId</h4>
+    <p>Balance: @Model.Account.Balance</p>
+    <p>Created: @Model.Account.Created</p>
+
+    <hr />
+
+    <h4>Transactions</h4>
+    <div class="row">
+        <div class="col">Id</div>
+        <div class="col">Amount</div>
+        <div class="col">Operation</div>
+        <div class="col">Bank</div>
+        <div class="col">Account</div>
+        <div class="col">Date</div>
+        <div class="col">Symbol</div>
+        <div class="col">Type</div>
+        <div class="col">Balance</div>
+    </div>
+    <hr />
+    @foreach (var transaction in Model.Account.Transactions)
+    {
+        <div class="row">
+            <div class="col">@transaction.TransactionId</div>
+            <div class="col">@transaction.Amount</div>
+            <div class="col">@transaction.Operation</div>
+            <div class="col">@transaction.Bank</div>
+            <div class="col">@transaction.Account</div>
+            <div class="col">@transaction.Date</div>
+            <div class="col">@transaction.Symbol</div>
+            <div class="col">@transaction.Type</div>
+            <div class="col">@transaction.Balance</div>
+        </div>
+        <hr />
+    }
 </div>

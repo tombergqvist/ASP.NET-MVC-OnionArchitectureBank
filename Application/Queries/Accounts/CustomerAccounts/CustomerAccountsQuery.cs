@@ -12,14 +12,14 @@ namespace Application.Queries.Accounts.CustomerAccounts
             if(customer != null)
             {
                 var dispositions = context.Dispositions.Where(d => d.Customer == customer).ToList();
-                var listOfAccounts = new List<AccountDetailsModel>();
+                var listOfAccounts = new List<CustomerAccountDetailsModel>();
                 foreach (var disposition in dispositions)
                 {
                     var account = context.Accounts.SingleOrDefault(a => a.AccountId == disposition.AccountId);
 
                     if (account != null)
                     {
-                        listOfAccounts.Add(new AccountDetailsModel()
+                        listOfAccounts.Add(new CustomerAccountDetailsModel()
                         {
                             AccountId = account.AccountId,
                             Balance = account.Balance,

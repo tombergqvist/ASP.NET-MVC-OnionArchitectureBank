@@ -7,6 +7,6 @@ namespace Application.Queries.Accounts.CustomerAccounts
     public class CustomerAccountsModel
     {
         public decimal TotalBalance { get; set; }
-        public List<AccountDetailsModel> Accounts { get; set; }
+        public List<CustomerAccountDetailsModel> Accounts { get; set; }
     }
 }

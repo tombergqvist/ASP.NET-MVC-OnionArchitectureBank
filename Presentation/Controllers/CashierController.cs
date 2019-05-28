@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Application.Queries.Accounts.AccountDetails;
 using Application.Queries.Accounts.CustomerAccounts;
 using Application.Queries.Customers.CustomerDetails;
 using Application.Queries.Customers.CustomerSearch;
@@ -24,7 +25,10 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult Account(int id)
         {
-            return View();
+            return View(new AccountViewModel()
+            {
+                Account = new AccountDetailsQuery().Get(_context, id)
+            });
         }
 
         [HttpGet]
