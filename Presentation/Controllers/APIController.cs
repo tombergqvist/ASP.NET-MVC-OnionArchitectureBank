@@ -25,7 +25,7 @@ namespace Presentation.Controllers
 
         [HttpGet]
         [Route("me")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
         public JsonResult Customer()
         {
             var customer = new CustomerDetailsQuery().Get(_context, 1);
