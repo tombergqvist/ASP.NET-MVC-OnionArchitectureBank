@@ -1,0 +1,30 @@
+﻿@model WithdrawViewModel
+
+<div class="text-center">
+    <h1>Withdraw</h1>
+    <hr />
+    <p>Make a new withdrawal</p>
+    @if (Model.Message != null)
+    {
+        <p>@Model.Message</p>
+    }
+    <hr />
+    <form asp-action="Withdraw" asp-controller="Cashier" method="post">
+        <div class="form-group">
+            <label asp-for="Withdraw.AccountId"></label>
+            <input class="form-control" asp-for="Withdraw.AccountId" />
+            <span asp-validation-for="Withdraw.AccountId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Withdraw.Amount"></label>
+            <input class="form-control" asp-for="Withdraw.Amount" />
+            <span asp-validation-for="Withdraw.Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Withdraw.Symbol"></label>
+            <input class="form-control" asp-for="Withdraw.Symbol" />
+            <span asp-validation-for="Withdraw.Symbol" class="text-danger"></span>
+        </div>
+        <button class="btn btn-dark">Withdraw</button>
+    </form>
+</div>

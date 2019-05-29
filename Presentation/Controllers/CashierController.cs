@@ -1,5 +1,5 @@
-﻿using Application.Commands.Customers;
-using Application.Interfaces;
+﻿using Application.Interfaces;
+using Application.Commands.Customers;
 using Application.Queries.Accounts.AccountDetails;
 using Application.Queries.Accounts.CustomerAccounts;
 using Application.Queries.Customers.CustomerDetails;
@@ -8,6 +8,12 @@ using Application.Queries.Transactions;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Models.Cashier;
 using System.Threading.Tasks;
+using Application.Commands.Transactions.Transfer;
+using Application.Commands.Transactions.Withdraw;
+using Application.Commands.Transactions.Deposit;
+using Application.Queries.Interest.LatestInterestDate;
+using System;
+using Application.Commands.Transactions.Interest;
 
 namespace Presentation.Controllers
 {
@@ -23,6 +29,89 @@ namespace Presentation.Controllers
         public IActionResult ManageCustomers()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Transaction()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Deposit()
+        {
+            return View(new DepositViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deposit(int id, DepositViewModel model)
+        {
+            string msg = null;
+            if (ModelState.IsValid)
+            {
+                msg = await new DepositQuery().RunAsync(_context, model.Deposit);
+            }
+            model.Message = msg;
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Interest()
+        {
+            return View(new InterestViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Interest(InterestViewModel model)
+        {
+            string msg = null;
+            if (ModelState.IsValid)
+            {
+                DateTime date = new LatestInterestDateQuery().Get(_context, model.Interest.AccountId);
+                msg = await new InterestQuery().RunAsync(_context, model.Interest, date, 0.10m);
+            }
+            model.Message = msg;
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Withdraw()
+        {
+            return View(new WithdrawViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Withdraw(int id, WithdrawViewModel model)
+        {
+            string msg = null;
+            if (ModelState.IsValid)
+            {
+                msg = await new WithdrawQuery().RunAsync(_context, model.Withdraw);
+            }
+            model.Message = msg;
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Transfer()
+        {
+            return View(new TransferViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Transfer(int id, TransferViewModel model)
+        {
+            string msg = null;
+            if (ModelState.IsValid)
+            {
+                msg = await new TransferCommand().RunAsync(_context, model.Transfer);
+            }
+            model.Message = msg;
+            return View(model);
         }
 
         [HttpGet]

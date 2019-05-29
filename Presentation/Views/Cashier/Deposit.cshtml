@@ -1,0 +1,30 @@
+﻿@model DepositViewModel
+
+<div class="text-center">
+    <h1>Deposit</h1>
+    <hr />
+    <p>Make a new deposit</p>
+    @if (Model.Message != null)
+    {
+        <p>@Model.Message</p>
+    }
+    <hr />
+    <form asp-action="Deposit" asp-controller="Cashier" method="post">
+        <div class="form-group">
+            <label asp-for="Deposit.AccountId"></label>
+            <input class="form-control" asp-for="Deposit.AccountId" />
+            <span asp-validation-for="Deposit.AccountId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Deposit.Amount"></label>
+            <input class="form-control" asp-for="Deposit.Amount" />
+            <span asp-validation-for="Deposit.Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Deposit.Symbol"></label>
+            <input class="form-control" asp-for="Deposit.Symbol" />
+            <span asp-validation-for="Deposit.Symbol" class="text-danger"></span>
+        </div>
+        <button class="btn btn-dark">Deposit</button>
+    </form>
+</div>

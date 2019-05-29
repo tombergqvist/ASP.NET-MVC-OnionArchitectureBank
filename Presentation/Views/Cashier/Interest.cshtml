@@ -1,0 +1,20 @@
+﻿@model InterestViewModel
+
+<div class="text-center">
+    <h1>Interest</h1>
+    <hr />
+    <p>Add credit from interest to an account</p>
+    @if (Model.Message != null)
+    {
+        <p>@Model.Message</p>
+    }
+    <hr />
+    <form asp-action="Interest" asp-controller="Cashier" method="post">
+        <div class="form-group">
+            <label asp-for="Interest.AccountId"></label>
+            <input class="form-control" asp-for="Interest.AccountId" />
+            <span asp-validation-for="Interest.AccountId" class="text-danger"></span>
+        </div>
+        <button class="btn btn-dark">Add</button>
+    </form>
+</div>

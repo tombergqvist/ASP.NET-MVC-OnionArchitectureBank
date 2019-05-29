@@ -21,6 +21,9 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-action="EditCustomer" asp-controller="cashier">New customer</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="Transaction" asp-controller="cashier">Transaction</a>
+            </li>
         }
 
         @if (User.IsInRole("cashier"))
@@ -33,6 +36,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-action="NewCustomer" asp-controller="cashier">New customer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="Transaction" asp-controller="cashier">Transaction</a>
             </li>
         }
 

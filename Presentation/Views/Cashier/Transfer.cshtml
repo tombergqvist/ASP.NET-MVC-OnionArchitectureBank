@@ -1,0 +1,35 @@
+﻿@model TransferViewModel
+
+<div class="text-center">
+    <h1>Transfer</h1>
+    <hr />
+    <p>Make a new transfer</p>
+    @if (Model.Message != null)
+    {
+        <p>@Model.Message</p>
+    }
+    <hr />
+    <form asp-action="Transfer" asp-controller="Cashier" method="post">
+        <div class="form-group">
+            <label asp-for="Transfer.AccountId"></label>
+            <input class="form-control" asp-for="Transfer.AccountId" />
+            <span asp-validation-for="Transfer.AccountId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Transfer.ToAccount"></label>
+            <input class="form-control" asp-for="Transfer.ToAccount" />
+            <span asp-validation-for="Transfer.ToAccount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Transfer.Amount"></label>
+            <input class="form-control" asp-for="Transfer.Amount" />
+            <span asp-validation-for="Transfer.Amount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Transfer.Symbol"></label>
+            <input class="form-control" asp-for="Transfer.Symbol" />
+            <span asp-validation-for="Transfer.Symbol" class="text-danger"></span>
+        </div>
+        <button class="btn btn-dark">Transfer</button>
+    </form>
+</div>
