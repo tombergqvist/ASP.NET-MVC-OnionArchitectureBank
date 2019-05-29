@@ -12,30 +12,19 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-action="ManageUsers" asp-controller="admin">Manage users</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="CustomerSearch">Customers</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="Customer">Customer details</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-action="EditCustomer" asp-controller="cashier">New customer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-action="Transaction" asp-controller="cashier">Transaction</a>
-            </li>
+
         }
 
         @if (User.IsInRole("cashier"))
         {
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="CustomerSearch">Customers</a>
+                <a class="nav-link text-dark" asp-area="" asp-action="CustomerSearch" asp-controller="Cashier">Customers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cashier" asp-action="Customer">Customer details</a>
+                <a class="nav-link text-dark" asp-area="" asp-action="Customer" asp-controller="Cashier">Customer details</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-action="NewCustomer" asp-controller="cashier">New customer</a>
+                <a class="nav-link text-dark" asp-action="EditCustomer" asp-controller="cashier">New customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-action="Transaction" asp-controller="cashier">Transaction</a>

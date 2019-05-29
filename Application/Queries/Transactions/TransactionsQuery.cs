@@ -8,9 +8,9 @@ namespace Application.Queries.Transactions
 {
     public class TransactionsQuery
     {
-        public TransactionsModel Get(IBankDbContext context, int id, int page)
+        public TransactionsModel Get(IBankDbContext context, int id, int limit, int page)
         {
-            int transactionsPerPage = 20;
+            int transactionsPerPage = limit;
 
             var transactions = new List<TransactionDetailsModel>();
             foreach (var transaction in context.Transactions

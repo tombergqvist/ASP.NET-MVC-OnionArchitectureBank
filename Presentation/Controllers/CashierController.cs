@@ -14,9 +14,11 @@ using Application.Commands.Transactions.Deposit;
 using Application.Queries.Interest.LatestInterestDate;
 using System;
 using Application.Commands.Transactions.Interest;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Presentation.Controllers
 {
+    [Authorize(Roles = "cashier")]
     public class CashierController : Controller
     {
         private readonly IBankDbContext _context;
@@ -50,7 +52,7 @@ namespace Presentation.Controllers
             string msg = null;
             if (ModelState.IsValid)
             {
-                msg = await new DepositQuery().RunAsync(_context, model.Deposit);
+                msg = await new DepositCommand().RunAsync(_context, model.Deposit);
             }
             model.Message = msg;
             return View(model);
@@ -89,7 +91,7 @@ namespace Presentation.Controllers
             string msg = null;
             if (ModelState.IsValid)
             {
-                msg = await new WithdrawQuery().RunAsync(_context, model.Withdraw);
+                msg = await new WithdrawCommand().RunAsync(_context, model.Withdraw);
             }
             model.Message = msg;
             return View(model);
@@ -159,14 +161,14 @@ namespace Presentation.Controllers
             return View(new AccountViewModel()
             {
                 Account = new AccountDetailsQuery().Get(_context, id),
-                TransactionsList = new TransactionsQuery().Get(_context, id, 0)
+                TransactionsList = new TransactionsQuery().Get(_context, id, 20, 0)
             });
         }
 
         [HttpGet]
         public IActionResult GetTransactions(int id, int page)
         {
-            var query = new TransactionsQuery().Get(_context, id, page);
+            var query = new TransactionsQuery().Get(_context, id, 20, page);
             return PartialView("_TransactionsPartial", new TransactionsViewModel()
             {
                 Transactions = query.Transactions,

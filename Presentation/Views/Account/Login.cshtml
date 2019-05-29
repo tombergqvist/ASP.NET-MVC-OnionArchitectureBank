@@ -2,16 +2,16 @@
 
 <div class="text-center">
     <form asp-controller="Account" asp-action="Login" method="post">
-        <div class="formgroup">
-            <label asp-for="@Model.Username">Username</label>
-            <input asp-for="@Model.Username" />
-            <span asp-validation-for="Username"></span>
+        <div class="form-group">
+            <label asp-for="Username">Username</label>
+            <input class="form-control" asp-for="Username" />
+            <span class="text-danger" asp-validation-for="Username"></span>
         </div>
 
-        <div class="formgroup">
-            <label asp-for="@Model.Password">Password</label>
-            <input type="password" asp-for="@Model.Password" />
-            <span asp-validation-for="Password"></span>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input class="form-control" type="password" asp-for="Password" />
+            <span class="text-danger" asp-validation-for="Password"></span>
         </div>
         <input type="submit" value="Sign in" />
     </form>

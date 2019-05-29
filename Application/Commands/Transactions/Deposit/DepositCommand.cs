@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Transactions.Deposit
 {
-    public class DepositQuery
+    public class DepositCommand
     {
         public async Task<string> RunAsync(IBankDbContext context, DepositModel model)
         {

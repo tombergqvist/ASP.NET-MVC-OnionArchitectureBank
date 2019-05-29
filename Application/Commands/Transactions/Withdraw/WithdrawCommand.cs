@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Transactions.Withdraw
 {
-    public class WithdrawQuery
+    public class WithdrawCommand
     {
         public async Task<string> RunAsync(IBankDbContext context, WithdrawModel model)
         {
