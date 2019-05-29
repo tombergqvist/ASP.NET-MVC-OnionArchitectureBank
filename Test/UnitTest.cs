@@ -7,6 +7,7 @@ using System.Linq;
 using Persistence;
 using Application.Commands.Transactions.Transfer;
 using Application.Commands.Transactions.Deposit;
+using Application.Commands.Transactions.Interest;
 
 namespace Test
 {
@@ -37,6 +38,7 @@ namespace Test
                     AccountId = id,
                     Balance = 100
                 };
+
                 context.Accounts.Add(account);
                 context.SaveChanges();
 
@@ -210,6 +212,46 @@ namespace Test
 
                 // Checks so that no transaction was made
                 Assert.Equal(2, numOfTransactions);
+            }
+        }
+
+        [Fact]
+        public void Interest()
+        {
+            using (var context = new BankDbContext(options))
+            {
+                int id = 8;
+                decimal interest = 0.135m;
+                DateTime now = DateTime.Now;
+                DateTime latestInterest = now.AddDays(-365);
+                decimal balance = 100m;
+                decimal expected = 113.5m;
+
+                var model = new InterestModel()
+                {
+                    AccountId = id
+                };
+                var account = new Account()
+                {
+                    AccountId = id,
+                    Balance = balance
+                };
+                context.Accounts.Add(account);
+                context.SaveChanges();
+
+                new InterestCommand().RunAsync(context, model, latestInterest, interest).Wait();
+
+                int numOfTransactions = context.Transactions
+                    .Where(t => t.AccountId == account.AccountId || t.AccountId == account.AccountId)
+                    .Count();
+
+                var createdAccount1 = context.Accounts.Single(a => a.AccountId == id);
+
+                // Check balance
+                Assert.Equal(expected, createdAccount1.Balance);
+
+                // Checks so that a transaction was made
+                Assert.Equal(1, numOfTransactions);
             }
         }
     }

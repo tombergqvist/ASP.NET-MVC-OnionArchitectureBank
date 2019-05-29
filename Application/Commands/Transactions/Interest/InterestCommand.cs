@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Transactions.Interest
 {
-    public class InterestQuery
+    public class InterestCommand
     {
         public async Task<string> RunAsync(IBankDbContext context, InterestModel model, DateTime latestDate, decimal interest)
         {
@@ -18,12 +18,13 @@ namespace Application.Commands.Transactions.Interest
             {
                 int days = (int)(DateTime.Now - latestDate).TotalDays;
 
-                var amount = account.Balance * (interest / 365) * days;
+                var amount = account.Balance * interest / 365 * days; // / 365m * days; //days
+                amount = Math.Round(amount, 2);
                 account.Balance = account.Balance + amount;
 
                 await context.SaveChangesAsync(new CancellationToken());
 
-                // Deposit transaction
+                // Interest transaction
                 await new NewTransactionCommand().RunAsync(context, new NewTransactionModel()
                 {
                     AccountId = model.AccountId,

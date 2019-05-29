@@ -32,7 +32,6 @@ namespace Presentation.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, true, false);
                 if (result.Succeeded)
                 {
-
                     if (Url.IsLocalUrl(returnurl))
                     {
                         return Redirect(returnurl);

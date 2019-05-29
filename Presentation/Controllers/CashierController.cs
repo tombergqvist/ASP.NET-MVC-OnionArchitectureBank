@@ -72,7 +72,7 @@ namespace Presentation.Controllers
             if (ModelState.IsValid)
             {
                 DateTime date = new LatestInterestDateQuery().Get(_context, model.Interest.AccountId);
-                msg = await new InterestQuery().RunAsync(_context, model.Interest, date, 0.10m);
+                msg = await new InterestCommand().RunAsync(_context, model.Interest, date, 0.10m);
             }
             model.Message = msg;
             return View(model);
