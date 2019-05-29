@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{99C02583-65F6-4845-922B-D5400649F0A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{356D6A79-3A81-46FA-AADC-0AAD1B8F3BD2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{EEB1AD57-9317-4F4E-AB7A-2460DF7B6CEA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{F4423E14-1DD7-4214-B2C1-BCDE42235D69}"
@@ -17,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C25BE60A-E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{FDA18BB3-5C5A-4FF1-A2B4-31DD2D9CED6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{3B151987-5A8F-4F93-AF12-099E914D907C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{3B151987-5A8F-4F93-AF12-099E914D907C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{356D6A79-3A81-46FA-AADC-0AAD1B8F3BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{356D6A79-3A81-46FA-AADC-0AAD1B8F3BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{356D6A79-3A81-46FA-AADC-0AAD1B8F3BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{356D6A79-3A81-46FA-AADC-0AAD1B8F3BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEB1AD57-9317-4F4E-AB7A-2460DF7B6CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEB1AD57-9317-4F4E-AB7A-2460DF7B6CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEB1AD57-9317-4F4E-AB7A-2460DF7B6CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,7 +48,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{356D6A79-3A81-46FA-AADC-0AAD1B8F3BD2} = {99C02583-65F6-4845-922B-D5400649F0A8}
 		{EEB1AD57-9317-4F4E-AB7A-2460DF7B6CEA} = {99C02583-65F6-4845-922B-D5400649F0A8}
 		{F4423E14-1DD7-4214-B2C1-BCDE42235D69} = {C25BE60A-EFBC-417D-B0DA-BB6521F22F50}
 		{56071D10-0641-476B-BFAF-04FE2C224381} = {C25BE60A-EFBC-417D-B0DA-BB6521F22F50}
