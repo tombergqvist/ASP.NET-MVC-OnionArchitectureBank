@@ -9,7 +9,7 @@ namespace Presentation
     {
         public void SeedRoles(RoleManager<IdentityRole> roleManager)
         {
-            var roles = new List<string> { "admin", "cashier" };
+            var roles = new List<string> { "admin", "cashier", "customer" };
 
             foreach (var roleName in roles)
             {
@@ -32,6 +32,20 @@ namespace Presentation
                 };
                 userManager.CreateAsync(user, password).Wait();
                 userManager.AddToRoleAsync(user, "admin").Wait();
+            }
+        }
+
+        public void SeedCustomer(UserManager<ApplicationUser> userManager, int customerId, string name, string password)
+        {
+            if (userManager.FindByNameAsync(name).Result == null)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = name,
+                    CustomerId = customerId
+                };
+                userManager.CreateAsync(user, password).Wait();
+                userManager.AddToRoleAsync(user, "customer").Wait();
             }
         }
     }

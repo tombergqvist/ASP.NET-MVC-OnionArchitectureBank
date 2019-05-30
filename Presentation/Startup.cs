@@ -66,12 +66,11 @@ namespace Presentation
                 options.SlidingExpiration = true;
             });
 
-
             // JWT
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication("Bearer") // JwtBearerDefaults.AuthenticationScheme
             .AddJwtBearer(options =>
             {
-                var signingKey = Convert.FromBase64String(Configuration["SigningSecret"]);
+                var signingKey = Convert.FromBase64String(Configuration["JWT:SigningSecret"]);
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = false,
@@ -100,11 +99,13 @@ namespace Presentation
 
             app.UseAuthentication();
 
-            // Creates the identity roles that are needed
             var seeder = new DataSeeder();
+            // Creates the identity roles that are needed
             seeder.SeedRoles(roleManager);
             // Creates a starter Admin user with specified password
             seeder.SeedAdmin(userManager, "Password123");
+            // Creates customers
+            seeder.SeedCustomer(userManager, 1, "HannaStormo", "Password123");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

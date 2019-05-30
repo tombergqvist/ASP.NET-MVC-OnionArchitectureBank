@@ -12,12 +12,10 @@ namespace Presentation.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public AccountController(SignInManager<ApplicationUser> signInManager)
         {
             _signInManager = signInManager;
-            _userManager = userManager;
         }
 
         [HttpGet]
