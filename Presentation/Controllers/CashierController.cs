@@ -204,24 +204,16 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCustomers(string name, string city, int page)
+        public IActionResult GetCustomers(string name, string city, int page, int? pages)
         {
+            if(pages == null)
+                pages = new CustomerSearchCountPagesQuery().Get(_context, name, city);
+
             var query = new CustomerSearchQuery().Get(_context, name, city, page);
             return PartialView("_CustomerSearchResultPartial", new CustomerSearchViewModel()
             {
                 Customers = query.Customers,
                 Page = page,
-                Name = name,
-                City = city
-            });
-        }
-
-        [HttpGet]
-        public IActionResult GetCustomerSearchCount(string name, string city)
-        {
-            var pages = new CustomerSearchCountPagesQuery().Get(_context, name, city);
-            return PartialView("_CustomerSearchPagesPartial", new CustomerSearchPagesViewModel()
-            {
                 Name = name,
                 City = city,
                 Pages = pages
