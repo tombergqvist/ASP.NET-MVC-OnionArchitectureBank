@@ -210,7 +210,7 @@ namespace Test
                 Assert.Equal(0, createdAccount1.Balance);
                 Assert.Equal(50, createdAccount2.Balance);
 
-                // Checks so that no transaction was made
+                // Checks so that both transactions were made
                 Assert.Equal(2, numOfTransactions);
             }
         }
