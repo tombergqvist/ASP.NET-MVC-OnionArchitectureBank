@@ -4,6 +4,7 @@
 {
     <p>No matching customer was found.</p>
 }
+else if(Model.Pages > 1){
 <span>
     @for (int i = 1; i < Model.Pages + 1; i++)
     {
@@ -19,7 +20,7 @@
     </a>
     }
 </span>
-
+}
 @if (Model.Customers.Count() == 0)
 {
     <p>This page is empty.</p>
