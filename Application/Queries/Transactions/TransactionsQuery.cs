@@ -15,6 +15,7 @@ namespace Application.Queries.Transactions
             var transactions = new List<TransactionDetailsModel>();
             foreach (var transaction in context.Transactions
                 .Where(t => t.AccountId == id)
+                .OrderByDescending(t => t.Date)
                 .Skip(transactionsPerPage * page)
                 .Take(transactionsPerPage)
                 .ToList())
