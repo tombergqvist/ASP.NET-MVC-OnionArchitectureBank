@@ -11,7 +11,7 @@ namespace Application.Queries.Customers.CustomerSearch
             int customersPerPage = 50;
             var customers = context.Customers
                 .Where(c => ((c.Givenname + " " + c.Surname).Contains(name ?? "")) && c.City.Contains(city ?? ""))
-                .Skip(customersPerPage * page)
+                .Skip(customersPerPage * (page-1))
                 .Take(customersPerPage)
                 .ToList();
 
@@ -29,15 +29,8 @@ namespace Application.Queries.Customers.CustomerSearch
                     Country = customer.Country
                 });
             }
-
-            var resultsOnNextPage = context.Customers
-                .Where(c => ((c.Givenname + " " + c.Surname).Contains(name ?? "")) && c.City.Contains(city ?? ""))
-                .Skip(customersPerPage * (page + 1))
-                .Take(1).Count();
-
             return new CustomerSearchModel() {
-                Customers = customerList,
-                HasMore = resultsOnNextPage == 0 ? false : true
+                Customers = customerList
             };
         }
     }

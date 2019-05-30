@@ -9,6 +9,5 @@ namespace Presentation.Models.Cashier
         public string City { get; set; }
         public int Page { get; set; }
         public List<CustomerSearchDetailsModel> Customers { get; set; }
-        public bool HasMore { get; set; }
     }
 }

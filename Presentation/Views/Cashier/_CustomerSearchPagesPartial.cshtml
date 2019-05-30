@@ -1,0 +1,21 @@
+﻿@model CustomerSearchPagesViewModel
+
+@if (Model.Pages == 0)
+{
+    <p>No matching customer was found.</p>
+}
+<span>
+    @for (int i = 1; i < Model.Pages + 1; i++)
+    {
+        <a asp-action="GetCustomers" asp-controller="Cashier" data-ajax="true"
+           data-ajax-method="GET"
+           data-ajax-mode="replace"
+           data-ajax-update="#customer-search-result"
+           asp-route-name="@Model.Name"
+           asp-route-city="@Model.City"
+           asp-route-page="@i">
+            @i
+        </a>
+    }
+</span>
+<div id="customer-search-result"></div>

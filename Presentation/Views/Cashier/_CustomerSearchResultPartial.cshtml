@@ -2,7 +2,7 @@
 
 @if (Model.Customers.Count() == 0)
 {
-    <p>No matching customer was found.</p>
+    <p>This page is empty.</p>
 }
 else
 {
@@ -16,21 +16,5 @@ else
         </p>
         <p>@customer.Streetaddress, @customer.Zipcode @customer.City, @customer.Country</p>
         <hr />
-    }
-    @if (Model.HasMore)
-    {
-        <div id="next-button">
-            <form asp-action="GetCustomers" asp-controller="Cashier"
-                  data-ajax="true"
-                  data-ajax-method="GET"
-                  data-ajax-mode="after"
-                  data-ajax-complete="removeNextButton"
-                  data-ajax-update="#customer-search-result">
-                <input type="hidden" asp-for="Name" />
-                <input type="hidden" asp-for="City" />
-                <input type="hidden" name="Page" value="@Model.Page" />
-                <button class="btn btn-dark">+</button>
-            </form>
-        </div>
     }
 }

@@ -15,6 +15,7 @@ using Application.Queries.Interest.LatestInterestDate;
 using System;
 using Application.Commands.Transactions.Interest;
 using Microsoft.AspNetCore.Authorization;
+using Application.Queries.Customers.CustomerSearchCountPages;
 
 namespace Presentation.Controllers
 {
@@ -119,10 +120,11 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult EditCustomer(int? id)
         {
-            if(id == null)
+            if(id == null || id == 0)
                 return View(new NewCustomerCommandModel());
 
             var query = new CustomerDetailsQuery().Get(_context, (int)id);
+
             return View(new NewCustomerCommandModel()
             {
                 Birthday = query.Birthday,
@@ -208,10 +210,21 @@ namespace Presentation.Controllers
             return PartialView("_CustomerSearchResultPartial", new CustomerSearchViewModel()
             {
                 Customers = query.Customers,
-                Page = page + 1,
+                Page = page,
+                Name = name,
+                City = city
+            });
+        }
+
+        [HttpGet]
+        public IActionResult GetCustomerSearchCount(string name, string city)
+        {
+            var pages = new CustomerSearchCountPagesQuery().Get(_context, name, city);
+            return PartialView("_CustomerSearchPagesPartial", new CustomerSearchPagesViewModel()
+            {
                 Name = name,
                 City = city,
-                HasMore = query.HasMore
+                Pages = pages
             });
         }
     }

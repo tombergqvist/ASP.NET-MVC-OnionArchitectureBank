@@ -3,7 +3,15 @@
 @model NewCustomerCommandModel
 
 <div class="text-center">
-    <h1>Create or edit an existing user</h1>
+    <h1>Customer</h1>
+    @if (Model.CustomerId == 0)
+    {
+        <p>Create a new customer.</p>
+    }
+    else
+    {
+        <p>Edit user @Model.CustomerId.</p>
+    }
     <form asp-action="NewCustomer" asp-controller="Cashier" method="post">
         <input type="hidden" asp-for="CustomerId" />
         <div class="form-group">

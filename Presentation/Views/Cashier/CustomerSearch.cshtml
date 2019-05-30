@@ -1,17 +1,16 @@
 ﻿<div class="text-center">
     <h1>Find a customer</h1>
-    <form asp-action="GetCustomers" asp-controller="Cashier" method="GET"
+    <p>Find a customer by name and city.</p>
+    <form asp-action="GetCustomerSearchCount" asp-controller="Cashier" method="GET"
           data-ajax="true"
           data-ajax-method="GET"
           data-ajax-mode="replace"
-          data-ajax-update="#customer-search-result">
+          data-ajax-update="#customer-search-result-pages">
         <label for="name"></label>
-        <input name="name" placeholder="Name"/>
+        <input name="name" placeholder="Name" />
         <label for="name"></label>
         <input name="city" placeholder="City" />
-        <input type="hidden" name="page" value="0" />
         <button class="btn btn-dark">Find</button>
     </form>
-
-    <div id="customer-search-result"></div>
+    <div id="customer-search-result-pages"></div>
 </div>
